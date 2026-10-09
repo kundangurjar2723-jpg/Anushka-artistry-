@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f8f6f1">
+<meta name="description" content="Explore the pencil art and graphite drawings of Anushka — portraits, nature studies, and original sketches.">
+<title>Anushka Artistry — Every Line Tells a Story</title>
+<style>
+:root{--paper:#f8f6f1;--ink:#22221f;--muted:#77756e;--line:#dedbd2;--accent:#9b7559;--white:#fff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.wrap{width:min(1160px,calc(100% - 48px));margin:auto}
+header{position:sticky;top:0;z-index:10;background:rgba(248,246,241,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(222,219,210,.75)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-family:Georgia,"Times New Roman",serif;font-size:22px;letter-spacing:-.6px;font-weight:600}
+.logo span{color:var(--accent)}
+nav{display:flex;align-items:center;gap:30px;font-size:13px;color:#56554f}
+nav a:hover,.text-link:hover{color:var(--accent)}
+.nav-cta{border:1px solid var(--ink);padding:10px 16px;border-radius:3px;color:var(--ink)}
+.menu-btn{display:none;background:none;border:1px solid var(--line);padding:8px 11px;border-radius:3px}
+.hero{padding:76px 0 84px;display:grid;grid-template-columns:1.02fr .98fr;gap:70px;align-items:center}
+.eyebrow{text-transform:uppercase;letter-spacing:2.6px;font-size:10px;font-weight:700;color:var(--accent);display:flex;align-items:center;gap:12px}
+.eyebrow:before{content:"";width:28px;height:1px;background:var(--accent)}
+h1,h2,h3,p{margin-top:0}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(52px,6.6vw,88px);line-height:.99;letter-spacing:-3.8px;font-weight:400;margin:25px 0}
+h1 em{font-weight:400;color:var(--accent)}
+.hero-copy{max-width:470px;color:#69675f;font-size:16px;line-height:1.9}
+.actions{display:flex;align-items:center;gap:22px;margin-top:30px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;background:var(--ink);color:white;padding:14px 20px;border:1px solid var(--ink);border-radius:3px;font-size:12px;letter-spacing:.4px;transition:.2s}
+.btn:hover{background:var(--accent);border-color:var(--accent)}
+.text-link{font-size:12px;border-bottom:1px solid var(--line);padding-bottom:4px}
+.hero-art{position:relative;min-height:500px}
+.hero-art img{width:100%;height:500px;object-fit:cover;display:block;filter:grayscale(100%);border-radius:2px}
+.art-label{position:absolute;left:-28px;bottom:28px;background:var(--paper);padding:18px 22px;box-shadow:0 12px 36px #0000000b;max-width:210px}
+.art-label small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:1.8px;margin-bottom:5px}
+.art-label strong{font-family:Georgia,serif;font-size:19px;font-weight:400}
+.hero-number{position:absolute;right:-17px;top:24px;writing-mode:vertical-rl;color:var(--muted);font-size:10px;letter-spacing:2px}
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0}
+.strip-inner{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:10px;letter-spacing:1.8px;text-transform:uppercase}
+section{padding:92px 0}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:35px}
+.kicker{font-size:10px;letter-spacing:2.4px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:12px}
+h2{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:clamp(36px,4vw,52px);line-height:1.08;letter-spacing:-1.5px;margin-bottom:0}
+.section-intro{max-width:360px;color:var(--muted);font-size:13px;margin-bottom:3px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.filter{background:transparent;border:1px solid var(--line);padding:8px 13px;border-radius:30px;font-size:11px;color:#66645d;cursor:pointer}
+.filter.active,.filter:hover{background:var(--ink);color:white;border-color:var(--ink)}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:26px 20px}
+.art-card{min-width:0}
+.art-image{height:360px;position:relative;overflow:hidden;background:#e9e6df}
+.art-image img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(100%);transition:transform .55s,filter .3s}
+.art-card:hover .art-image img{transform:scale(1.035);filter:grayscale(65%)}
+.art-meta{display:flex;justify-content:space-between;gap:12px;padding-top:13px}
+.art-meta h3{font-family:Georgia,serif;font-size:19px;font-weight:400;margin:0}
+.art-meta span{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;padding-top:5px}
+.art-card[hidden]{display:none}
+.note{margin-top:25px;font-size:11px;color:var(--muted)}
+.about{background:#eeece5}
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:center}
+.about-image{height:480px;overflow:hidden;background:#dedbd2}
+.about-image img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%)}
+.about-copy p{color:#69675f;font-size:14px;line-height:1.95;max-width:510px}
+.signature{font-family:Georgia,serif;font-style:italic;font-size:28px;color:var(--accent);margin-top:28px}
+.stats{display:flex;gap:36px;margin-top:34px;padding-top:25px;border-top:1px solid #d8d5cd}
+.stat strong{font-family:Georgia,serif;font-size:25px;font-weight:400;display:block}
+.stat span{font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted)}
+.process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:42px}
+.process-card{border-top:1px solid var(--line);padding-top:20px}
+.process-card .num{font-family:Georgia,serif;font-size:16px;color:var(--accent)}
+.process-card h3{font-family:Georgia,serif;font-weight:400;font-size:23px;margin:14px 0 8px}
+.process-card p{font-size:12px;color:var(--muted);max-width:300px}
+.contact{background:#262622;color:#f8f6f1}
+.contact-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:80px;align-items:center}
+.contact .kicker{color:#c8a78c}
+.contact h2{max-width:650px}
+.contact p{color:#c4c1b8;font-size:14px;max-width:470px;margin-top:20px}
+.contact .btn{background:var(--paper);border-color:var(--paper);color:var(--ink);margin-top:12px}
+.contact .btn:hover{background:#d7c4b4;border-color:#d7c4b4}
+.contact-side{border-left:1px solid #55544e;padding-left:30px}
+.contact-side small{font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:#b5b2a9}
+.contact-side p{font-family:Georgia,serif;font-size:22px;color:#f8f6f1;margin:9px 0 24px}
+footer{background:#262622;color:#a9a69e;border-top:1px solid #484740;padding:22px 0;font-size:10px}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer strong{font-family:Georgia,serif;color:#f8f6f1;font-size:15px;font-weight:400}
+@media(max-width:850px){.hero{gap:36px;padding-top:55px}.hero-art,.hero-art img{height:430px;min-height:430px}.art-image{height:300px}.about-grid{gap:40px}.contact-grid{gap:40px}}
+@media(max-width:650px){.wrap{width:min(100% - 32px,1160px)}.nav{height:66px}nav{display:none;position:absolute;left:0;right:0;top:66px;padding:20px 24px 24px;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:18px}nav.open{display:flex}.menu-btn{display:block}.nav-cta{display:none}.hero{grid-template-columns:1fr;gap:38px;padding:53px 0 60px}h1{font-size:62px;letter-spacing:-2.8px}.hero-copy{font-size:14px}.hero-art,.hero-art img{height:390px;min-height:390px}.art-label{left:-7px;bottom:17px}.hero-number{right:-8px}section{padding:65px 0}.section-head{display:block}.section-intro{margin-top:18px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:23px 12px}.art-image{height:245px}.art-meta{display:block}.art-meta h3{font-size:17px}.art-meta span{display:block}.about-grid,.contact-grid{grid-template-columns:1fr;gap:32px}.about-image{height:360px}.process-grid{grid-template-columns:1fr;gap:24px}.stats{gap:22px}.contact-side{padding-left:20px}.strip-inner{font-size:9px;gap:10px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#home" aria-label="Anushka Artistry home">Anushka <span>Artistry.</span></a>
+    <nav id="nav-links" aria-label="Main navigation">
+      <a href="#gallery">Gallery</a><a href="#about">About</a><a href="#process">My Approach</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="#contact">Get in touch ↗</a>
+    <button class="menu-btn" id="menu-btn" aria-label="Toggle menu" aria-expanded="false">Menu ☰</button>
+  </div>
+</header>
+<main>
+  <div class="wrap hero" id="home">
+    <div>
+      <div class="eyebrow">The art of seeing</div>
+      <h1>Small details.<br><em>Big feelings.</em></h1>
+      <p class="hero-copy">A collection of moments, faces and little details brought to life one pencil stroke at a time. Welcome to my world of graphite and imagination.</p>
+      <div class="actions"><a class="btn" href="#gallery">Explore the gallery <span>↗</span></a><a class="text-link" href="#about">Meet the artist</a></div>
+    </div>
+    <div class="hero-art">
+      <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=1100&q=85" alt="Artist's creative workspace with drawing materials">
+      <div class="art-label"><small>Featured collection</small><strong>Studies in graphite</strong></div>
+      <div class="hero-number">ORIGINAL PENCIL ART · EST. WITH PASSION</div>
+    </div>
+  </div>
+  <div class="strip"><div class="wrap strip-inner"><span>Graphite & charcoal</span><span>Made by hand</span><span>Original artwork</span><span>Always learning</span></div></div>
+
+  <section id="gallery">
+    <div class="wrap">
+      <div class="section-head"><div><div class="kicker">Selected works</div><h2>A gallery of<br>pencil & patience.</h2></div><p class="section-intro">Every drawing begins with a simple line. Explore a selection of sketches, studies and ideas.</p></div>
+      <div class="filters" role="group" aria-label="Filter artwork">
+        <button class="filter active" data-filter="all">All works</button><button class="filter" data-filter="portrait">Portraits</button><button class="filter" data-filter="nature">Nature & still life</button><button class="filter" data-filter="studies">Studies</button>
+      </div>
+      <div class="gallery">
+        <article class="art-card" data-category="portrait"><div class="art-image"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=700&q=85" alt="Portrait reference image for pencil portrait artwork"></div><div class="art-meta"><h3>Faces & feelings</h3><span>Portrait study</span></div></article>
+        <article class="art-card" data-category="nature"><div class="art-image"><img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=700&q=85" alt="Flowers arranged as a nature drawing study"></div><div class="art-meta"><h3>Quiet bloom</h3><span>Nature study</span></div></article>
+        <article class="art-card" data-category="studies"><div class="art-image"><img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=700&q=85" alt="Art tools and sketching materials"></div><div class="art-meta"><h3>In the making</h3><span>Studio study</span></div></article>
+        <article class="art-card" data-category="portrait"><div class="art-image"><img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=700&q=85" alt="Expressive face portrait reference"></div><div class="art-meta"><h3>Quiet expression</h3><span>Portrait study</span></div></article>
+        <article class="art-card" data-category="nature"><div class="art-image"><img src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=700&q=85" alt="Leaves and natural forms for a botanical study"></div><div class="art-meta"><h3>Nature's lines</h3><span>Botanical study</span></div></article>
+        <article class="art-card" data-category="studies"><div class="art-image"><img src="https://images.unsplash.com/photo-1455390582262-044cmeet7f1?auto=format&fit=crop&w=700&q=85" alt="Notebook and creative process"></div><div class="art-meta"><h3>Ideas on paper</h3><span>Sketchbook</span></div></article>
+      </div>
+      <p class="note">Portfolio preview: replace these sample images with Anushka’s own artwork before publishing.</p>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <div class="about-image"><img src="https://images.unsplash.com/photo-1455390582262-044cmeet7f1?auto=format&fit=crop&w=900&q=85" alt="Notebook and art-making tools on a desk"></div>
+      <div><div class="kicker">A little about me</div><h2>Art is how I<br>notice the world.</h2><p>Hi, I’m Anushka — an artist who loves turning everyday inspiration into pencil art. From expressive portraits to nature-inspired studies, I enjoy the patience, practice and little discoveries that happen with every drawing.</p><p>This portfolio is a growing collection of my work, my experiments and the details that catch my eye. Thank you for being here and taking a closer look.</p><div class="signature">Anushka</div><div class="stats"><div class="stat"><strong>01</strong><span>Pencil in hand</span></div><div class="stat"><strong>∞</strong><span>Ideas to explore</span></div><div class="stat"><strong>100%</strong><span>Made with care</span></div></div></div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="wrap"><div class="kicker">Behind every drawing</div><h2>A little patience.<br>A lot of heart.</h2>
+      <div class="process-grid">
+        <div class="process-card"><div class="num">01 / Observe</div><h3>Find the feeling</h3><p>It starts with noticing a gesture, a shadow, a shape or a small detail worth remembering.</p></div>
+        <div class="process-card"><div class="num">02 / Draw</div><h3>Build each layer</h3><p>Light outlines, careful shading and gradual contrast help each drawing find its form.</p></div>
+        <div class="process-card"><div class="num">03 / Refine</div><h3>Let it come alive</h3><p>The finishing touches bring balance, texture and personality to the page.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap contact-grid"><div><div class="kicker">Say hello</div><h2>Have a question or an idea?</h2><p>I’d love to hear from you. Reach out to discuss artwork, collaborations or simply share what caught your eye. You can email me or message me on WhatsApp.</p><div class="actions"><a class="btn" id="email-link" href="mailto:Anushka@gmail.con">Send an email ↗</a><a class="btn" id="whatsapp-link" href="#contact" aria-label="WhatsApp contact number needs to be completed">WhatsApp me ↗</a></div></div>
+      <div class="contact-side"><small>Artist</small><p>Anushka</p><small>Instagram</small><p><a id="instagram-link" href="https://www.instagram.com/Anushka/" target="_blank" rel="noreferrer">@Anushka ↗</a></p><small>Email</small><p><a href="mailto:Anushka@gmail.con">Anushka@gmail.con ↗</a></p><small>Based in</small><p>India</p></div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap footer-inner"><strong>Anushka Artistry.</strong><span>Every line tells a story.</span><span>© <span id="year"></span> Anushka · Made with care</span></div></footer>
+<script>
+const menuBtn=document.getElementById('menu-btn');
+const nav=document.getElementById('nav-links');
+menuBtn.addEventListener('click',()=>{const open=nav.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(open));menuBtn.textContent=open?'Close ✕':'Menu ☰';});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.textContent='Menu ☰';}));
+document.querySelectorAll('.filter').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));button.classList.add('active');const filter=button.dataset.filter;document.querySelectorAll('.art-card').forEach(card=>{card.hidden=filter!=='all'&&card.dataset.category!==filter;});}));
+document.getElementById('year').textContent=new Date().getFullYear();
+// WhatsApp stays safely inactive until a complete phone number is supplied.
+const whatsappNumber = ''; // Add country code + number only, digits only, e.g. 919876543210
+const whatsappLink = document.getElementById('whatsapp-link');
+if (whatsappNumber) { whatsappLink.href = 'https://wa.me/' + whatsappNumber; whatsappLink.target = '_blank'; whatsappLink.rel = 'noreferrer'; } else { whatsappLink.addEventListener('click', (event) => { event.preventDefault(); alert('Please add Anushka’s complete WhatsApp number in the website code first.'); }); }
+</script>
+</body>
+</html>
